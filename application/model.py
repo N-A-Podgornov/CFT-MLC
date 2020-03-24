@@ -3,6 +3,8 @@ import json
 import plotly
 import plotly.graph_objects as go
 import numpy as np
+
+
 # import pydub
 # import librosa
 
@@ -24,17 +26,13 @@ class Model(object):
 
     @staticmethod
     def create_plot():
-        n = 100000
-        fig = go.Figure(data=go.Scattergl(
-            x=np.random.randn(n),
-            y=np.random.randn(n),
-            mode='markers',
-            marker=dict(
-                color=np.random.randn(n),
-                colorscale='Viridis',
-                line_width=1
-            )
-        ))
+        count = 500
+        xScale = np.linspace(0, 100, count)
+        yScale = np.random.randn(count)
 
-        graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        # Create a trace
+        trace = go.Scatter(x=xScale, y=yScale)
+        data = [trace]
+
+        graph_json = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
         return graph_json

@@ -30,5 +30,10 @@ def submit():
 
 @app.route('/<filename>', methods=['GET'])
 def response(filename):
-    Model(filename).print_fn()
-    return render_template('response.html', plot=Model.create_plot())
+    in_fn, fn_ex = os.path.splitext(filename)
+    out_fn = os.path.join(Config.UPLOAD_FOLDER, in_fn + ".png")
+    # out_fn1 = os.path.join("application/templates/images/", in_fn + ".png")  # todo del
+    # out_fn2 = os.path.join("images/", in_fn + ".png")  # todo del
+
+    Model(filename).get_spectrogram().savefig(out_fn)
+    return render_template('response.html', spectrogram=out_fn)

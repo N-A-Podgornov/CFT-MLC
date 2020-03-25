@@ -2,25 +2,8 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="chart" id="statistic">
-                    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-                    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-
-                    <script>
-                        graphs = {{plot | safe}};
-                        Plotly.plot('statistic', graphs, {});
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <form>
-        <p></p>
+        <p><img src="{{ spectrogram }}" alt="Service Error"></p>
         <p><input type="button" value="Загрузить новый файл" onClick='location.href="/submit"'></p>
     </form>
 
